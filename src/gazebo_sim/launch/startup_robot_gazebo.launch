@@ -1,7 +1,7 @@
 <launch>
     <!-- 将 Urdf 文件的内容加载到参数服务器 -->
     <param name="robot_description" command="$(find xacro)/xacro $(find gazebo_sim)/xacro/robot.xacro" />
-   <!-- <param name="robot_description" textfile="$(find robot_description)/urdf/LDS_robot.urdf" /> -->
+
     <!-- 启动 gazebo -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" >
         <arg name="world_name" value="$(find gazebo_sim)/worlds/sim_world.world" />
@@ -15,4 +15,6 @@
     <!-- 启动机器人状态和关节状态发布节点 -->
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
     <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" />
 </launch>
