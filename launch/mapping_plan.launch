@@ -1,0 +1,8 @@
+<launch>
+    <!-- 启动建图节点 -->
+    <include file="$(env HOME)/LDS_robot/launch/my_mapping.launch" />
+    <!-- 运行move_base节点 -->
+    <include file="$(env HOME)/LDS_robot/launch/my_plan.launch" />
+    <!-- 运行rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_description)/config/nav.rviz" />
+</launch>
